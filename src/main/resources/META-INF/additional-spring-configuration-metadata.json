@@ -1,0 +1,8 @@
+{
+  "properties": [
+    {
+      "name": "notify.type",
+      "type": "java.lang.String",
+      "description": "Description for notify.type."
+  }
+] }

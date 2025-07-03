@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" href="favicon.png" type="image/png"/>
+    <title>Notify Send</title>
+</head>
+<body id="send_notify">
+    <div>
+        <h1><strong>Projeto de software:</strong> <span>Abstract Factory - Java Spring Boot</span></h1>
+
+        <div id="send_whatsapp" class="form">
+            <h2>Enviar Mensagem via: <span>Whatsapp</span></h2>
+            <form id="form_whatsapp">
+                <label for="telefone">📱Telefone:</label>
+                <input type="tel" id="telefone" name="to" pattern="[0-9]+" required />
+
+                <label for="mensagem_whatsapp">💬 Mensagem:</label>
+                <input type="text" id="mensagem_whatsapp" name="message" required />
+
+                <button type="submit">▶️ Enviar</button>
+            </form>
+        </div>
+
+        <div id="send_email" class=form>
+            <h2>Enviar Mensagem via: <span>Email</span></h2>
+            <form id="form_email">
+                <label for="email">✉️ Email:</label>
+                <input type="email" id="email" name="to" required />
+
+                <label for="mensagem_email">💬 Mensagem:</label>
+                <input type="text" id="mensagem_email" name="message" required />
+
+                <button type="submit">▶️ Enviar</button>
+            </form>
+        </div>
+
+        <div class="action_buttons">
+            <a href="index_.html">
+                <button>🚪Retornar</button>
+            </a>
+        </div>
+    </div>
+    <footer>
+        <small>FEITO COM ÓDIO E FALTA DE CARINHO ❤️ &copy; 2025 João Pedro A.Silveira. Todos os direitos reservados.</small>
+    </footer>
+
+    <script src="send_notify.js"></script>
+</body>
+</html>

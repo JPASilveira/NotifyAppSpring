@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css" />
+  <link rel="icon" href="favicon.png" type="image/png" />
+  <title>Abstract Factory</title>
+</head>
+<body>
+<h1><strong>Projeto de software:</strong> <span>Abstract Factory & DAO Factory - Java Spring Boot</span></h1>
+<nav></nav>
+<section>
+  <div>
+    <div class="sub_title">
+      <h2>📔 O que é o padrão abstract factory?</h2>
+      <button class="show_button">🔽</button>
+    </div>
+    <p class="hidden_text">
+      O padrão Abstract Factory é um padrão de projeto criacional que tem como objetivo fornecer uma interface para criar famílias de objetos relacionados ou dependentes, sem especificar suas classes concretas. Ele é especialmente útil quando o sistema precisa ser independente da forma como seus objetos são criados, compostos e representados. Em vez de instanciar objetos diretamente, o cliente trabalha com interfaces ou classes abstratas, delegando a criação dos objetos para fábricas concretas que implementam a interface da fábrica abstrata.
+    </p>
+    <p class="hidden_text">
+      Isso garante maior flexibilidade e facilita a troca de implementações, permitindo, por exemplo, mudar todo o conjunto de objetos produzidos apenas trocando a fábrica utilizada. O padrão geralmente envolve três partes principais: a fábrica abstrata, que define os métodos para criação dos produtos; as fábricas concretas, que implementam esses métodos retornando produtos específicos; e os produtos abstratos, que são as interfaces ou classes base que os produtos concretos devem seguir.
+    </p>
+    <p class="hidden_text">
+      Entre os principais benefícios do Abstract Factory estão a desacoplagem da criação dos objetos, a facilidade para adicionar novas famílias de produtos e a garantia de consistência entre objetos relacionados, já que todos os objetos criados por uma fábrica concreta pertencem a uma mesma família lógica. Em contrapartida, a principal desvantagem é que o padrão pode aumentar a complexidade do código, principalmente se o número de famílias ou produtos for muito grande, exigindo a criação de várias interfaces e classes adicionais.
+    </p>
+  </div>
+
+  <div>
+    <div class="sub_title">
+      <h2>📘 O que é o padrão Abstract DAO Factory?</h2>
+      <button class="show_button">🔽</button>
+    </div>
+    <p class="hidden_text">
+      O <strong>Abstract DAO Factory</strong> é uma especialização do Abstract Factory focada na camada de persistência. Um <strong>DAO (Data Access Object)</strong> é um objeto que abstrai o acesso a dados. A fábrica abstrata de DAOs, portanto, permite criar objetos de acesso a dados para diferentes bancos (H2, SQLite, PostgreSQL, etc.) sem que a camada de serviço precise saber qual banco está sendo utilizado. Isso isola a lógica de negócio das particularidades do banco de dados.
+    </p>
+  </div>
+
+  <div>
+    <div class="sub_title">
+      <h2>🎯 Objetivo:</h2>
+      <button class="show_button">🔽</button>
+    </div>
+    <p class="hidden_text">
+      Criar uma aplicação desacoplada capaz de enviar notificações por diferentes canais (WhatsApp, Email), com consistência e flexibilidade na troca ou adição de canais, além de permitir alternância entre diferentes mecanismos de persistência (H2 e SQLite) sem alterar o código da aplicação.
+    </p>
+  </div>
+
+  <div>
+    <div class="sub_title">
+      <h2>🔳 Componentes principais:</h2>
+      <button class="show_button">🔽</button>
+    </div>
+    <table class="hidden_table">
+      <thead>
+      <tr>
+        <th>Elemento</th>
+        <th>Descrição</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+        <td>Abstract Factory</td>
+        <td>Interface ou classe abstrata que declara métodos para criar cada tipo de produto.</td>
+      </tr>
+      <tr>
+        <td>Concrete Factory</td>
+        <td>Implementa a Abstract Factory e cria objetos concretos de uma determinada família.</td>
+      </tr>
+      <tr>
+        <td>Abstract Product</td>
+        <td>Interface ou classe base que define os tipos dos produtos que podem ser criados.</td>
+      </tr>
+      <tr>
+        <td>Concrete Product</td>
+        <td>Implementações concretas dos produtos que pertencem a uma família específica.</td>
+      </tr>
+      <tr>
+        <td>Client</td>
+        <td>Utiliza apenas as interfaces da fábrica e dos produtos, sem conhecer as classes concretas.</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div>
+    <div class="sub_title">
+      <h2>🔄 Fluxo de Funcionamento</h2>
+      <button class="show_button">🔽</button>
+    </div>
+    <ol class="hidden_list">
+      <li>Cliente solicita objetos à fábrica abstrata</li>
+      <li>Fábrica concreta é instanciada conforme a necessidade (configuração, parâmetro, etc.)</li>
+      <li>A fábrica concreta cria os produtos concretos da família correspondente</li>
+      <li>Cliente usa os produtos através das interfaces abstratas</li>
+    </ol>
+  </div>
+
+  <div>
+    <div class="sub_title">
+      <h2>✅ Vantagens:</h2>
+      <button class="show_button">🔽</button>
+    </div>
+    <ul class="hidden_list">
+      <li>Desacoplamento entre cliente e classes concretas</li>
+      <li>Facilidade para trocar famílias inteiras de produtos</li>
+      <li>Garantia de consistência entre os objetos criados</li>
+    </ul>
+  </div>
+
+  <div>
+    <div class="sub_title">
+      <h2>⚠️ Desvantagens:</h2>
+      <button class="show_button">🔽</button>
+    </div>
+    <ul class="hidden_list">
+      <li>Aumento da complexidade do código</li>
+      <li>Mais classes e interfaces para manter</li>
+      <li>Difícil extensão com novas variações de produto se não planejado</li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div>
+    <h2>🏗️ Aplicação do Abstract Factory no Projeto NotifyApp</h2>
+  </div>
+
+  <div>
+    <div class="sub_title">
+      <h2>🧱 Estrutura geral do projeto</h2>
+      <button class="show_button">🔽</button>
+    </div>
+    <p class="hidden_text">
+      O projeto <strong>NotifyApp</strong> utiliza <strong>dois padrões Abstract Factory</strong> de forma independente e complementar, criando uma arquitetura altamente modular e desacoplada em duas frentes distintas:
+    </p>
+    <ol class="hidden_list">
+      <li><strong>Abstract Factory para Canais de Notificação:</strong> Gerencia a criação de objetos para enviar notificações (Email, WhatsApp).</li>
+      <li><strong>Abstract DAO Factory para Persistência:</strong> Gerencia a criação de objetos para salvar logs de notificação em diferentes bancos de dados (H2, SQLite).</li>
+    </ol>
+    <ul class="hidden_list">
+      <li><strong>application:</strong> Regras de negócio (<code>NotifyService</code>).</li>
+      <li><strong>config:</strong> Configuração de beans e propriedades (<code>NotifyConfig</code>).</li>
+      <li><strong>domain:</strong> Interfaces, entidades e repositórios.</li>
+      <li><strong>infrastructure:</strong> Implementações para cada canal (email/whatsapp) e para cada banco (h2/sqlite).</li>
+      <li><strong>presentation:</strong> Controllers e DTOs para comunicação REST.</li>
+      <li><strong>resources/static:</strong> Interface web HTML, JS e CSS.</li>
+    </ul>
+  </div>
+
+  <div>
+    <div class="sub_title">
+      <h2>🏭 Como o padrão Abstract Factory está implementado</h2>
+      <button class="show_button">🔽</button>
+    </div>
+    <ul class="hidden_list">
+      <li><strong>NotifyFactory:</strong> Interface que define os métodos <code>createMessageFormatter()</code> e <code>createSender()</code>.</li>
+      <li><strong>EmailNotifyFactory</strong> e <strong>WhatsAppNotifyFactory:</strong> Implementam a criação de objetos de cada canal.</li>
+      <li><strong>MessageFormatter</strong> e <strong>MessageSender:</strong> Interfaces dos produtos abstratos.</li>
+      <li><strong>EmailFormatter</strong>, <strong>EmailSender</strong>, <strong>WhatsAppFormatter</strong>, <strong>WhatsAppSender:</strong> Produtos concretos.</li>
+      <li><strong>NotifyService:</strong> Cliente que utiliza a <code>NotifyFactory</code>.</li>
+    </ul>
+  </div>
+
+  <div>
+    <div class="sub_title">
+      <h2>🛠️ Como o padrão DAOFactory está implementado</h2>
+      <button class="show_button">🔽</button>
+    </div>
+      <ul class="hidden_list">
+        <li><strong>RepositoryFactory</strong>: Interface abstrata que define o método <code>createNotifyLogRepository()</code>.</li>
+        <li><strong>H2NotifyLogFactory</strong> e <strong>SQLiteNotifyLogFactory</strong>: Implementações concretas da fábrica, que retornam instâncias dos DAOs específicos para cada banco (H2 e SQLite).</li>
+        <li><strong>NotifyLogRepository</strong>: Interface do repositório (DAO) com métodos como <code>save()</code>.</li>
+        <li><strong>H2NotifyLogDAO</strong> e <strong>SQLiteNotifyLogDAO</strong>: Implementações concretas de <code>NotifyLogRepository</code> usando <code>EntityManager</code> para persistência no banco de dados correspondente.</li>
+        <li><strong>RepositoryFactoryConfig</strong>: Classe de configuração que seleciona dinamicamente a fábrica concreta (H2 ou SQLite) com base na propriedade <code>notify.persistence</code>.</li>
+        <li><strong>NotifyService</strong>: Cliente que utiliza a <code>RepositoryFactory</code> para obter o <code>NotifyLogRepository</code> apropriado e salvar os registros de notificação.</li>
+      </ul>
+  </div>
+
+
+  <div>
+    <div class="sub_title">
+      <h2>📦 Organização detalhada dos pacotes</h2>
+      <button class="show_button">🔽</button>
+    </div>
+    <ul class="hidden_list">
+      <li><strong>application:</strong> <code>NotifyService</code></li>
+      <li><strong>config:</strong> <code>NotifyConfig</code>, <code>RepositoryFactoryConfig</code></li>
+      <li><strong>domain/factory:</strong> <code>NotifyFactory</code>, <code>RepositoryFactory</code></li>
+      <li><strong>domain/model:</strong> <code>MessageFormatter</code>, <code>MessageSender</code>, <code>NotifyLog</code></li>
+      <li><strong>domain/repository:</strong> <code>NotifyLogRepository</code></li>
+      <li><strong>infrastructure/email:</strong> <code>EmailFormatter</code>, <code>EmailSender</code>, <code>EmailNotifyFactory</code></li>
+      <li><strong>infrastructure/whatsapp:</strong> <code>WhatsAppFormatter</code>, <code>WhatsAppSender</code>, <code>WhatsAppNotifyFactory</code></li>
+      <li><strong>infrastructure/h2:</strong> <code>H2NotifyLogDAO</code>, <code>H2NotifyLogFactory</code></li>
+      <li><strong>infrastructure/sqlite:</strong> <code>SQLiteNotifyLogDAO</code>, <code>SQLiteNotifyLogFactory</code></li>
+      <li><strong>presentation/controller:</strong> <code>NotifyController</code></li>
+      <li><strong>presentation/dto:</strong> <code>NotifyRequestDto</code></li>
+    </ul>
+  </div>
+
+  <div>
+    <div class="sub_title">
+      <h2>⚙️ Como a escolha da fábrica é feita?</h2>
+      <button class="show_button">🔽</button>
+    </div>
+    <p class="hidden_text">
+      A escolha da fábrica concreta do canal de envio é determinada pela propriedade <code>notify.type</code> definida no <code>application.properties</code>. Exemplo:
+    </p>
+    <pre class="hidden_text">notify.type=email</pre>
+    <p class="hidden_text">
+      Já a escolha do banco de dados é efetuada pelo profile <code>spring.profiles.ative</code> definido no <code>application.properties</code>. Exemplo:
+    </p>
+    <pre class="hidden_text">spring.profiles.active=h2</pre>
+    <p class="hidden_text">
+      O Spring Boot usa <code>@ConditionalOnProperty</code> para injetar automaticamente a implementação adequada, sem necessidade de alterar o código.
+    </p>
+  </div>
+
+  <div>
+  <div class="sub_title">
+    <h2>🔄 Fluxo de funcionamento no NotifyApp (com RepositoryFactory)</h2>
+    <button class="show_button">🔽</button>
+  </div>
+  <ol class="hidden_list">
+    <li>Cliente envia POST para <code>/notify</code>.</li>
+    <li><code>NotifyController</code> repassa a requisição para <code>NotifyService</code>.</li>
+    <li><code>NotifyService</code> utiliza a <code>NotifyFactory</code> para obter o <code>MessageFormatter</code> e o <code>MessageSender</code>.</li>
+    <li>A mensagem é formatada e enviada pelo canal apropriado (email ou WhatsApp).</li>
+    <li><code>NotifyService</code> também usa a <code>RepositoryFactory</code> para obter o <code>NotifyLogRepository</code> correspondente ao banco configurado (H2 ou SQLite).</li>
+    <li>O envio é registrado no banco através da entidade <code>NotifyLog</code> e persistido pela implementação apropriada do DAO.</li>
+  </ol>
+</div>
+
+  <div>
+    <div class="sub_title">
+      <h2>✅ Benefícios da aplicação no projeto</h2>
+      <button class="show_button">🔽</button>
+    </div>
+    <ul class="hidden_list">
+      <li><strong>Desacoplamento:</strong> O <code>NotifyService</code> é independente das implementações concretas tanto de envio quanto de persistência.</li>
+      <li><strong>Flexibilidade:</strong> Permite escolher o canal de envio (<code>email</code> ou <code>whatsapp</code>) e o banco de dados (<code>H2</code> ou <code>SQLite</code>) via configuração.</li>
+      <li><strong>Manutenção:</strong> Fácil de estender com novos canais e novos tipos de armazenamento (ex: PostgreSQL, MySQL).</li>
+      <li><strong>Consistência:</strong> Usa fábricas para criar famílias coerentes de objetos relacionados (formatter/sender e DAOs).</li>
+      <li><strong>Integração com Spring:</strong> Instancia dinamicamente os beans certos por meio de configurações e injeção de dependências.</li>
+    </ul>
+  </div>
+
+
+  <div>
+    <div class="sub_title">
+      <h2>💡 Conclusão</h2>
+      <button class="show_button">🔽</button>
+    </div>
+    <p class="hidden_text">
+      O uso do padrão Abstract Factory no NotifyApp torna o sistema altamente modular, flexível e preparado para mudanças. Ele separa claramente as responsabilidades entre formatação/envio de mensagens e persistência dos dados, permitindo a troca ou adição de canais e bancos sem alterar o núcleo do sistema.
+    </p>
+  </div>  
+</section>
+
+<div id="next_button">
+  <a href="send_notify.html">
+    <button>👉 Visualizar a Implementação</button>
+  </a>
+</div>
+
+<footer>
+  <small>FEITO COM ÓDIO E FALTA DE CARINHO ❤️ &copy; 2025 João Pedro A.Silveira. Todos os direitos reservados.</small>
+</footer>
+
+<script src="index.js"></script>
+</body>
+</html>
